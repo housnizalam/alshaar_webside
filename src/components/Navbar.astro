@@ -13,6 +13,29 @@ const isArabic = lang === "ar";
 const t = getTranslations(lang);
 
 const homeUrl = isArabic ? "/ar/" : "/en/";
+
+// ==================================================
+// SECTION: Active Page
+// ==================================================
+
+const currentPath = Astro.url.pathname;
+
+// ==================================================
+// SECTION: Language Switcher URLs
+// ==================================================
+
+// Remove the current language prefix
+const pagePath = currentPath.replace(/^\/(ar|en)(?=\/|$)/, "");
+
+// Build URLs while preserving the current page
+const arUrl = `/ar${pagePath || "/"}`;
+const enUrl = `/en${pagePath || "/"}`;
+
+const isHome = currentPath === "/ar/" || currentPath === "/en/";
+
+const isServices = currentPath.startsWith("/ar/services/")
+  || currentPath.startsWith("/en/services/");
+
 ---
 
 <!-- ==================================================
@@ -34,7 +57,7 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
     <div class="navbar__language" aria-label="Language selection">
 
       <a
-        href="/ar/"
+       href={arUrl}
         lang="ar"
         class:list={[
           "navbar__language-link",
@@ -46,7 +69,7 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
       </a>
 
       <a
-        href="/en/"
+        href={enUrl}
         lang="en"
         class:list={[
           "navbar__language-link",
@@ -125,12 +148,20 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
   </span>
 
   <!-- Services -->
-  <span class="navbar__link">
-    {t.nav.services}
-    <svg class="navbar__icon" aria-hidden="true">
-      <use href="#icon-services" />
-    </svg>
-  </span>
+<a
+  href={`/${lang}/services/`}
+  class:list={[
+    "navbar__link",
+    { "navbar__link--active": isServices }
+  ]}
+  aria-current={isServices ? "page" : undefined}
+>
+  {t.nav.services}
+
+  <svg class="navbar__icon" aria-hidden="true">
+    <use href="#icon-services" />
+  </svg>
+</a>
 
   <!-- Projects -->
   <span class="navbar__link">
@@ -143,8 +174,11 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
   <!-- Home -->
   <a
     href={homeUrl}
-    class="navbar__link navbar__link--active"
-    aria-current="page"
+   class:list={[
+  "navbar__link",
+  { "navbar__link--active": isHome }
+]}
+    aria-current={isHome ? "page" : undefined}
   >
     {t.nav.home}
     <svg class="navbar__icon" aria-hidden="true">
@@ -174,7 +208,13 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
         </a>
 
         <span class="mobile-menu__link">{t.nav.projects}</span>
-        <span class="mobile-menu__link">{t.nav.services}</span>
+        <a
+  href={`/${lang}/services/`}
+  class="mobile-menu__link"
+  aria-current={isServices ? "page" : undefined}
+>
+  {t.nav.services}
+</a>
         <span class="mobile-menu__link">{t.nav.about}</span>
         <span class="mobile-menu__link">{t.nav.certificates}</span>
         <span class="mobile-menu__link">{t.nav.contact}</span>
@@ -185,7 +225,7 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
 <div class="mobile-menu__languages">
 
   <a
-    href="/ar/"
+   href={arUrl}
     lang="ar"
     class:list={[
       "mobile-menu__language",
@@ -197,7 +237,7 @@ const homeUrl = isArabic ? "/ar/" : "/en/";
   </a>
 
   <a
-    href="/en/"
+   href={enUrl}
     lang="en"
     class:list={[
       "mobile-menu__language",

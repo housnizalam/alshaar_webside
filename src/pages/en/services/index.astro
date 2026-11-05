@@ -1,0 +1,28 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import ServicesPage from "../../../components/ServicesPage.astro";
+
+// ==================================================
+// SECTION: Page Properties
+// ==================================================
+
+const lang = "en";
+---
+
+<!-- ==================================================
+     SECTION: English Services Page
+     ================================================== -->
+
+<BaseLayout
+  lang={lang}
+  title="Engineering Services | AL SHAAR"
+>
+  <Navbar lang={lang} />
+
+  <ServicesPage lang={lang} />
+</BaseLayout>

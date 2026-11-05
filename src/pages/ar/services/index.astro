@@ -1,0 +1,28 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import ServicesPage from "../../../components/ServicesPage.astro";
+
+// ==================================================
+// SECTION: Page Properties
+// ==================================================
+
+const lang = "ar";
+---
+
+<!-- ==================================================
+     SECTION: Arabic Services Page
+     ================================================== -->
+
+<BaseLayout
+  lang={lang}
+  title="خدماتنا الهندسية | الشعار للمساحة والمقاولات"
+>
+  <Navbar lang={lang} />
+
+  <ServicesPage lang={lang} />
+</BaseLayout>

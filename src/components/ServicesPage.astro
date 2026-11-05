@@ -1,0 +1,115 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./ServicesPage.css";
+
+import ServiceCard from "./ServiceCard.astro";
+import { services } from "../data/services.js";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+
+const locale = lang === "en" ? "en" : "ar";
+
+// ==================================================
+// SECTION: Page Translations
+// ==================================================
+
+const translations = {
+  ar: {
+    title: "خدماتنا الهندسية",
+    description:
+      "نقدم مجموعة متكاملة من خدمات المساحة والهندسة والمقاولات، اعتمادًا على الخبرة والتقنيات الحديثة لتلبية احتياجات المشاريع المختلفة.",
+
+    contactTitle: "هل تحتاج إلى خدماتنا؟",
+    contactDescription:
+      "تواصل معنا لمناقشة متطلبات مشروعك والحصول على المعلومات المناسبة.",
+    contactButton: "تواصل معنا",
+  },
+
+  en: {
+    title: "Our Engineering Services",
+    description:
+      "We provide a comprehensive range of surveying, engineering, and contracting services using modern technologies and professional expertise.",
+
+    contactTitle: "Need Our Services?",
+    contactDescription:
+      "Contact us to discuss your project requirements and receive further information.",
+    contactButton: "Contact Us",
+  },
+};
+
+const t = translations[locale];
+---
+
+<!-- ==================================================
+     SECTION: Services Page
+     ================================================== -->
+
+<main class="services-page">
+
+  <!-- ==================================================
+       SECTION: Services Introduction
+       ================================================== -->
+
+  <header class="services-page__intro">
+
+    <h1 class="services-page__title">
+      {t.title}
+    </h1>
+
+    <div class="services-page__divider"></div>
+
+    <p class="services-page__description">
+      {t.description}
+    </p>
+
+  </header>
+
+  <!-- ==================================================
+       SECTION: Services Grid
+       ================================================== -->
+
+  <section
+    class="services-page__grid"
+    aria-label={t.title}
+  >
+
+    {services.map((service) => (
+      <ServiceCard
+        service={service}
+        lang={locale}
+      />
+    ))}
+
+  </section>
+
+  <!-- ==================================================
+       SECTION: Services Contact CTA
+       ================================================== -->
+
+  <section class="services-page__contact">
+
+    <h2 class="services-page__contact-title">
+      {t.contactTitle}
+    </h2>
+
+    <p class="services-page__contact-description">
+      {t.contactDescription}
+    </p>
+
+    <a
+      href={`/${locale}/contact/`}
+      class="services-page__contact-button"
+    >
+      {t.contactButton}
+    </a>
+
+  </section>
+
+</main>

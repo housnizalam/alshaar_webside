@@ -1,0 +1,273 @@
+/* ==================================================
+   SECTION: Services Page
+   ================================================== */
+
+.services-page {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100svh;
+
+  padding: 125px 2% 35px;
+
+  background-image: url("/images/hero-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+/* ==================================================
+   SECTION: Services Introduction
+   ================================================== */
+
+.services-page__intro {
+  width: 72%;
+  max-width: 1200px;
+
+  margin: 0 0 30px auto;
+
+  text-align: right;
+  direction: rtl;
+}
+
+.services-page__title {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-size: clamp(32px, 3.4vw, 56px);
+  font-weight: 700;
+}
+
+.services-page__divider {
+  width: 70px;
+  height: 4px;
+
+  margin: 12px 0 18px auto;
+
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+.services-page__description {
+  max-width: 850px;
+
+  margin: 0 0 0 auto;
+
+  color: var(--color-text);
+
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ==================================================
+   SECTION: Services Grid
+   ================================================== */
+
+.services-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+
+  width: 72%;
+  max-width: 1200px;
+
+  margin: 0 0 0 auto;
+
+  direction: rtl;
+}
+
+/* ==================================================
+   SECTION: Services Contact CTA
+   ================================================== */
+
+.services-page__contact {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  width: fit-content;
+  max-width: 72%;
+
+  margin: 35px 0 0 auto;
+  padding: 18px 24px;
+
+  background: rgb(241 243 246 / 35%);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-card);
+
+  direction: rtl;
+}
+
+.services-page__contact-title {
+  margin: 0;
+
+  color: var(--color-primary);
+  font-size: 23px;
+}
+
+.services-page__contact-description {
+  display: none;
+}
+
+.services-page__contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 10px 24px;
+
+  background: var(--color-primary);
+  color: var(--color-text-light);
+
+  border-radius: var(--radius-card);
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow: var(--shadow-card);
+
+  transition: transform 0.2s ease;
+}
+
+.services-page__contact-button:hover {
+  transform: translateY(-3px);
+}
+
+/* ==================================================
+   SECTION: Services English Direction
+   ================================================== */
+
+html[lang="en"] .services-page__intro {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .services-page__divider {
+  margin: 12px auto 18px 0;
+}
+
+html[lang="en"] .services-page__description {
+  margin: 0;
+}
+
+html[lang="en"] .services-page__contact {
+  direction: ltr;
+}
+
+/* ==================================================
+   SECTION: Services Responsive - Tablet
+   ================================================== */
+
+@media (max-width: 1200px) {
+  .services-page__intro,
+  .services-page__grid {
+    width: 76%;
+  }
+
+  .services-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==================================================
+   SECTION: Services Responsive - Mobile
+   ================================================== */
+
+@media (max-width: 900px) {
+
+  /* SECTION: Mobile Page Layout */
+
+  .services-page {
+    min-height: 100svh;
+    padding: 0 0 50px;
+
+    background-image: none;
+    background-color: var(--color-background);
+
+    overflow: visible;
+  }
+
+  /* ==================================================
+     SECTION: Mobile Hero Image
+     ================================================== */
+
+  .services-page::before {
+    content: "";
+
+    display: block;
+    flex-shrink: 0;
+
+    width: calc(100% - 32px);
+    aspect-ratio: 16 / 9;
+
+    margin: 0 auto;
+
+    background-image: url("/images/hero-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 16px;
+  }
+
+  /* ==================================================
+     SECTION: Mobile Services Introduction
+     ================================================== */
+
+  .services-page__intro {
+    width: calc(100% - 32px);
+    max-width: 100%;
+
+    margin: 35px auto 30px;
+  }
+
+  .services-page__title {
+    font-size: clamp(28px, 7vw, 38px);
+  }
+
+  .services-page__description {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  /* ==================================================
+     SECTION: Mobile Services Grid
+     ================================================== */
+
+  .services-page__grid {
+    width: calc(100% - 32px);
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* ==================================================
+     SECTION: Mobile Services Contact
+     ================================================== */
+
+  .services-page__contact {
+    width: calc(100% - 32px);
+    max-width: 100%;
+
+    margin: 30px auto 0;
+  }
+}

@@ -1,0 +1,144 @@
+/* ==================================================
+   SECTION: Service Card
+   ================================================== */
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 235px;
+  padding: 24px 20px;
+
+  background: rgb(241 243 246 / 48%);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-card);
+
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ==================================================
+   SECTION: Service Card Hover
+   ================================================== */
+
+.service-card:hover {
+  transform: translateY(-5px);
+
+  background: rgb(241 243 246 / 65%);
+
+  box-shadow: 0 16px 35px rgb(31 68 110 / 18%);
+}
+
+/* ==================================================
+   SECTION: Service Card Icon
+   ================================================== */
+
+.service-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+
+  color: var(--color-primary);
+  background: transparent;
+
+  border: none;
+}
+
+.service-card__icon svg {
+  width: 44px;
+  height: 44px;
+}
+
+/* ==================================================
+   SECTION: Service Card Content
+   ================================================== */
+
+.service-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.service-card__title {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.service-card__description {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ==================================================
+   SECTION: Service Card Language Direction
+   ================================================== */
+
+html[lang="ar"] .service-card {
+  direction: rtl;
+  text-align: center;
+}
+
+html[lang="en"] .service-card {
+  direction: ltr;
+  text-align: center;
+}
+
+/* ==================================================
+   SECTION: Service Card Responsive
+   ================================================== */
+
+@media (max-width: 600px) {
+  .service-card {
+    min-height: auto;
+    padding: 22px 18px;
+    gap: 10px;
+  }
+
+  .service-card__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-card__icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .service-card__title {
+    font-size: 19px;
+  }
+
+  .service-card__description {
+    font-size: 14px;
+  }
+}
