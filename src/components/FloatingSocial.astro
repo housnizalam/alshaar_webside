@@ -1,0 +1,86 @@
+---
+import "./FloatingSocial.css";
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+
+// ==================================================
+// SECTION: Social Links Configuration
+// ==================================================
+
+// TODO: Add real links when the client provides them.
+// const whatsappUrl = "https://wa.me/963XXXXXXXXX";
+// const facebookUrl = "https://www.facebook.com/XXXXXXXXX";
+
+const labels = {
+  ar: {
+    whatsapp: "تواصل عبر واتساب",
+    facebook: "تابعنا على فيسبوك",
+  },
+  en: {
+    whatsapp: "Contact on WhatsApp",
+    facebook: "Follow on Facebook",
+  },
+};
+
+const t = labels[lang === "en" ? "en" : "ar"];
+---
+
+<!-- ==================================================
+     SECTION: Floating Social Buttons
+     ================================================== -->
+
+<div class="floating-social">
+
+  <!-- SECTION: WhatsApp Button -->
+  <button
+    type="button"
+    class="floating-social__button"
+    title={t.whatsapp}
+    disabled
+  >
+    <span class="floating-social__icon floating-social__icon--whatsapp">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20.5l1.5-5.1A8.5 8.5 0 1 1 20.5 11.5Z" />
+        <path d="M8.5 7.8c-.8.2-1.2 1.4-.8 2.5.8 2.3 3 4.4 5.2 5.1 1.1.4 2.3-.1 2.5-.9l-2.1-1.1-1.1 1c-1.2-.5-2.3-1.6-2.8-2.8l1-1.1-1.1-2.1Z" />
+      </svg>
+    </span>
+
+    <span class="floating-social__label">
+      {t.whatsapp}
+    </span>
+  </button>
+
+  <!-- SECTION: Facebook Button -->
+  <button
+    type="button"
+    class="floating-social__button"
+    title={t.facebook}
+    disabled
+  >
+    <span class="floating-social__icon floating-social__icon--facebook">
+      <svg
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.25.2 2.25.2v2.47H15.2c-1.25 0-1.64.77-1.64 1.57V12h2.79l-.45 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
+      </svg>
+    </span>
+
+    <span class="floating-social__label">
+      {t.facebook}
+    </span>
+  </button>
+
+</div>

@@ -1,0 +1,502 @@
+/* ==================================================
+   SECTION: Navbar
+   ================================================== */
+
+/* ==================================================
+   SECTION: Navbar
+   ================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 18px 32px;
+
+  direction: ltr;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+
+  flex: 1;
+  min-width: 0;
+
+  padding: 12px 20px;
+
+  background: rgb(241 243 246 / 40%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-card);
+
+  direction: ltr;
+}
+
+/* ==================================================
+   SECTION: Navbar Brand
+   ================================================== */
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-left: 20px;
+  border-left: 1px solid rgb(31 68 110 / 35%);
+  direction: ltr;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.navbar__logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.navbar__brand-text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.navbar__brand-name {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.navbar__brand-description {
+  font-size: 12px;
+}
+
+/* ==================================================
+   SECTION: Navbar Links
+   ================================================== */
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.navbar__link {
+  color: var(--color-primary);
+  font-size: 21px;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.navbar__link--active {
+  font-weight: 700;
+}
+
+.navbar__language {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Keep navigation layout consistent across languages */
+.navbar__links {
+  direction: ltr;
+}
+
+.navbar__link {
+  unicode-bidi: isolate;
+}
+
+/* ==================================================
+   SECTION: Navbar Navigation Items
+   ================================================== */
+
+.navbar__links {
+  gap: 8px;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 10px 16px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* ==================================================
+   SECTION: Navbar Icons
+   ================================================== */
+
+.navbar__icon-defs {
+  display: none;
+}
+
+.navbar__icon {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==================================================
+   SECTION: Navbar Visual Separators
+   ================================================== */
+
+.navbar__link:not(:last-child) {
+  border-right: 1px solid rgb(31 68 110 / 14%);
+}
+
+/* ==================================================
+   SECTION: Navbar Active Link
+   ================================================== */
+
+.navbar__link--active {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+
+  box-shadow: 0 4px 12px rgb(31 68 110 / 22%);
+}
+
+/* ==================================================
+   SECTION: Navbar Hover
+   ================================================== */
+
+.navbar__link:not(.navbar__link--active):hover {
+  background: rgb(31 68 110 / 9%);
+}
+
+/* ==================================================
+   SECTION: Navbar Responsive
+   ================================================== */
+
+@media (max-width: 900px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar__brand-name {
+    font-size: 20px;
+  }
+
+  .navbar__logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .navbar__brand {
+    gap: 8px;
+  }
+}
+
+/* ==================================================
+   SECTION: Mobile Menu
+   ================================================== */
+
+.mobile-menu {
+  display: none;
+  position: relative;
+}
+
+.mobile-menu__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  color: var(--color-primary);
+  background: var(--color-surface);
+
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobile-menu__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-menu__icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.mobile-menu__panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  inset-inline-end: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 220px;
+  padding: 16px;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+
+  z-index: 1001;
+}
+
+.mobile-menu__link {
+  display: block;
+  padding: 10px;
+
+  color: var(--color-primary);
+  text-decoration: none;
+
+  border-radius: 8px;
+}
+
+.mobile-menu__link:hover {
+  background: var(--color-background);
+}
+
+/* ==================================================
+   SECTION: Mobile Menu Responsive
+   ================================================== */
+
+@media (max-width: 900px) {
+  .mobile-menu {
+    display: block;
+  }
+}
+
+/* ==================================================
+   SECTION: Language Switcher
+   ================================================== */
+
+/* ==================================================
+   SECTION: Language Switcher
+   ================================================== */
+
+.navbar__language {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  flex-shrink: 0;
+
+  padding: 4px;
+
+  background: rgb(255 255 255 / 25%);
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 12px;
+
+  direction: ltr;
+}
+
+.navbar__language-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 46px;
+  min-height: 32px;
+
+  padding: 5px 12px;
+
+  color: var(--color-primary);
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar__language-link:hover {
+  background: rgb(31 68 110 / 12%);
+}
+
+.navbar__language-link--active,
+.navbar__language-link--active:hover {
+  background: var(--color-primary);
+  color: white;
+
+  box-shadow: 0 3px 9px rgb(31 68 110 / 20%);
+}
+
+/* ==================================================
+   SECTION: Mobile Header Layout
+   ================================================== */
+
+@media (max-width: 900px) {
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    padding: 12px;
+
+    direction: ltr;
+  }
+
+  .navbar {
+    display: contents;
+  }
+
+  .navbar__brand {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    padding: 0;
+    border: none;
+  }
+
+  .mobile-menu {
+    display: block;
+
+    position: absolute;
+    top: 18px;
+    right: 130px;
+  }
+}
+
+/* ==================================================
+   SECTION: Mobile Language Switcher
+   ================================================== */
+
+@media (max-width: 900px) {
+  .navbar__language {
+    position: absolute;
+    top: 18px;
+    left: 8px;
+
+    display: flex;
+    gap: 4px;
+
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .navbar__language-link {
+    min-width: 30px;
+    min-height: 28px;
+
+    padding: 4px 6px;
+
+    font-size: 11px;
+    border-radius: 7px;
+  }
+
+  .navbar__language-link--active {
+    background: var(--color-primary);
+    color: white;
+  }
+}
+/* ==================================================
+   SECTION: Mobile Navigation Position
+   ================================================== */
+
+@media (max-width: 900px) {
+  .mobile-menu {
+    position: absolute;
+
+    top: 16px;
+    left: 12px;
+    right: auto;
+  }
+
+  .mobile-menu__panel {
+    left: 0;
+    right: auto;
+    inset-inline-end: auto;
+
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+/* ==================================================
+   SECTION: Mobile Language Switcher
+   ================================================== */
+
+@media (max-width: 900px) {
+  .navbar__language {
+    display: none;
+  }
+}
+
+/* ==================================================
+   SECTION: Mobile Menu Languages
+   ================================================== */
+
+.mobile-menu__languages {
+  display: flex;
+  gap: 8px;
+
+  margin-top: 8px;
+  padding-top: 12px;
+
+  border-top: 1px solid rgb(31 68 110 / 15%);
+
+  direction: ltr;
+}
+
+.mobile-menu__language {
+  flex: 1;
+
+  padding: 8px;
+
+  color: var(--color-primary);
+  background: var(--color-background);
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+
+.mobile-menu__language--active {
+  background: var(--color-primary);
+  color: white;
+}

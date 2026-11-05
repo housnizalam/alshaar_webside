@@ -1,0 +1,55 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+// ==================================================
+// SECTION: Global Fonts
+// ==================================================
+
+import "@fontsource/changa/400.css";
+import "@fontsource/changa/500.css";
+import "@fontsource/changa/600.css";
+import "@fontsource/changa/700.css";
+
+import "../styles/global.css";
+import FloatingSocial from "../components/FloatingSocial.astro";
+
+// ==================================================
+// SECTION: Layout Properties
+// ==================================================
+
+const {
+  lang = "ar",
+  title = "الشعار للمساحة والمقاولات",
+} = Astro.props;
+
+const direction = lang === "ar" ? "rtl" : "ltr";
+---
+
+<!doctype html>
+<html lang={lang} dir={direction}>
+  <head>
+    <!-- ==================================================
+         SECTION: Document Metadata
+         ================================================== -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <!-- ==================================================
+         SECTION: Page Content
+         ================================================== -->
+
+    <slot />
+    <!-- ==================================================
+     SECTION: Global Floating Social Buttons
+     ================================================== -->
+
+<FloatingSocial lang={lang} />
+  </body>
+</html>

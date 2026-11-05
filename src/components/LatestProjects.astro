@@ -1,0 +1,106 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./LatestProjects.css";
+import { projects } from "../data/projects.js";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+const locale = lang === "en" ? "en" : "ar";
+
+// ==================================================
+// SECTION: Latest Projects Data
+// ==================================================
+
+const latestProjects = projects.slice(0, 3);
+
+const labels = {
+  ar: {
+    title: "أحدث المشاريع",
+    viewAll: "عرض جميع المشاريع",
+    viewProject: "عرض تفاصيل المشروع",
+  },
+  en: {
+    title: "Latest Projects",
+    viewAll: "View All Projects",
+    viewProject: "View Project Details",
+  },
+};
+
+const t = labels[locale];
+---
+
+<!-- ==================================================
+     SECTION: Latest Projects
+     ================================================== -->
+
+<section class="latest-projects" aria-labelledby="latest-projects-title">
+
+  <!-- SECTION: Latest Projects Header -->
+  <div class="latest-projects__header">
+
+    <a
+      href={`/${locale}/projects/`}
+      class="latest-projects__view-all"
+    >
+      <span aria-hidden="true">←</span>
+      {t.viewAll}
+    </a>
+
+    <h2 id="latest-projects-title" class="latest-projects__title">
+      {t.title}
+    </h2>
+
+  </div>
+
+  <!-- ==================================================
+       SECTION: Latest Projects Grid
+       ================================================== -->
+
+  <div class="latest-projects__grid">
+
+    {latestProjects.map((project: (typeof projects)[number]) => (
+      <article class="project-card">
+
+        <!-- SECTION: Project Image -->
+        <img
+          src={project.image}
+          alt={project.title[locale]}
+          class="project-card__image"
+          loading="lazy"
+        />
+
+        <!-- SECTION: Project Details -->
+        <div class="project-card__body">
+
+          <div class="project-card__text">
+            <h3 class="project-card__title">
+              {project.title[locale]}
+            </h3>
+
+            <p class="project-card__description">
+              {project.description[locale]}
+            </p>
+          </div>
+
+          <a
+            href={`/${locale}/projects/${project.id}/`}
+            class="project-card__button"
+            aria-label={`${t.viewProject}: ${project.title[locale]}`}
+          >
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </article>
+    ))}
+
+  </div>
+
+</section>

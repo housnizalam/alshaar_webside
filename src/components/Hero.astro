@@ -1,0 +1,86 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import { getTranslations } from "../i18n/ui.js";
+import "./Hero.css";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+
+const t = getTranslations(lang);
+---
+
+<!-- ==================================================
+     SECTION: Hero
+     ================================================== -->
+
+<section class="hero" aria-labelledby="hero-title">
+
+  <!-- SECTION: Hero Background -->
+  <div class="hero__background" aria-hidden="true"></div>
+
+  <!-- SECTION: Hero Content -->
+  <div class="hero__content">
+
+    <h1 id="hero-title" class="hero__title">
+      {t.hero.title}
+    </h1>
+
+    <div class="hero__divider"></div>
+
+    <p class="hero__description">
+      {t.hero.description}
+    </p>
+
+    <!-- ==================================================
+     SECTION: Hero Service Cards
+     ================================================== -->
+
+<div class="hero__services">
+  {t.hero.services.map((service:String, index: number) => (
+    <div class="hero__service-card">
+      <span class="hero__service-number">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      <span class="hero__service-name">
+        {service}
+      </span>
+    </div>
+  ))}
+</div>
+
+<!-- ==================================================
+     SECTION: Hero Action Buttons
+     ================================================== -->
+
+<div class="hero__actions">
+
+  <a
+    href={`/${lang}/services/`}
+    class="hero__button hero__button--primary"
+  >
+    {t.hero.buttons.services}
+  </a>
+
+  <a
+    href={`/${lang}/contact/`}
+    class="hero__button hero__button--secondary"
+  >
+    {t.hero.buttons.contact}
+  </a>
+
+</div>
+
+  </div>
+<!-- ==================================================
+     SECTION: Hero Bottom Content
+     ================================================== -->
+
+<slot />
+</section>
