@@ -1,0 +1,337 @@
+/* ==================================================
+   SECTION: Projects Page
+   ================================================== */
+.projects-page {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 0;
+
+  padding: 135px 2% 30px;
+
+  background-image: url("/images/hero-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+/* ==================================================
+   SECTION: Projects Introduction
+   ================================================== */
+
+.projects-page__intro {
+  width: 72%;
+  max-width: 1200px;
+
+  margin: 0 0 35px auto;
+
+  direction: rtl;
+  text-align: right;
+}
+
+.projects-page__title {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-size: clamp(32px, 3.4vw, 56px);
+  font-weight: 700;
+}
+
+.projects-page__divider {
+  width: 70px;
+  height: 4px;
+
+  margin: 12px 0 18px auto;
+
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+.projects-page__description {
+  max-width: 850px;
+
+  margin: 0 0 0 auto;
+
+  color: var(--color-text);
+
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ==================================================
+   SECTION: Projects List
+   ================================================== */
+
+.projects-page__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  width: 72%;
+  max-width: 1200px;
+
+  margin: 0 0 0 auto;
+  padding: 0 10px 25px 0;
+
+  flex: 1;
+  min-height: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+/* ==================================================
+   SECTION: Detailed Project Card
+   ================================================== */
+
+.projects-page__card {
+  width: 100%;
+  overflow: hidden;
+
+  flex-shrink: 0;
+
+  background: rgb(241 243 246 / 45%);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 24px;
+
+  box-shadow: var(--shadow-card);
+
+  scroll-margin-top: 135px;
+
+  transition: box-shadow 0.25s ease;
+}
+
+.projects-page__card:hover {
+  box-shadow: 0 16px 35px rgb(31 68 110 / 18%);
+}
+
+/* ==================================================
+   SECTION: Project Main Image
+   ================================================== */
+
+.projects-page__image {
+  display: block;
+
+  width: 100%;
+  height: 360px;
+
+  object-fit: cover;
+}
+
+/* ==================================================
+   SECTION: Project Information
+   ================================================== */
+
+.projects-page__card-body {
+  padding: 28px 32px;
+
+  direction: rtl;
+  text-align: right;
+}
+
+.projects-page__card-title {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.projects-page__card-divider {
+  width: 65px;
+  height: 3px;
+
+  margin: 14px 0 20px auto;
+
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+.projects-page__card-description {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* ==================================================
+   SECTION: Project Gallery
+   ================================================== */
+
+.projects-page__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+
+  padding: 0 32px 28px;
+}
+
+.projects-page__gallery-image {
+  display: block;
+
+  width: 100%;
+  height: 150px;
+
+  object-fit: cover;
+
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 12px;
+}
+
+/* ==================================================
+   SECTION: English Language Direction
+   ================================================== */
+
+html[lang="en"] .projects-page__intro,
+html[lang="en"] .projects-page__card-body {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .projects-page__divider,
+html[lang="en"] .projects-page__card-divider {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[lang="en"] .projects-page__description {
+  margin-left: 0;
+}
+
+/* ==================================================
+   SECTION: Projects Responsive - Tablet
+   ================================================== */
+
+@media (max-width: 1200px) {
+  .projects-page__intro,
+  .projects-page__grid {
+    width: 76%;
+  }
+
+  .projects-page__image {
+    height: 300px;
+  }
+}
+
+/* ==================================================
+   SECTION: Projects Responsive - Mobile
+   ================================================== */
+
+@media (max-width: 900px) {
+  /* SECTION: Mobile Page Layout */
+
+  .projects-page {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    min-height: 100svh;
+    padding: 0 0 50px;
+
+    background-image: none;
+    background-color: var(--color-background);
+  }
+
+  /* SECTION: Mobile Hero Image */
+
+  .projects-page::before {
+    content: "";
+
+    display: block;
+    flex-shrink: 0;
+
+    width: calc(100% - 32px);
+    aspect-ratio: 16 / 9;
+
+    margin: 0 auto;
+
+    background-image: url("/images/hero-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 16px;
+  }
+
+  /* SECTION: Mobile Introduction */
+
+  .projects-page__intro {
+    width: calc(100% - 32px);
+    max-width: 100%;
+
+    margin: 35px auto 30px;
+  }
+
+  .projects-page__title {
+    font-size: clamp(28px, 7vw, 38px);
+  }
+
+  .projects-page__description {
+    font-size: 15px;
+  }
+
+  /* SECTION: Mobile Projects List */
+
+  .projects-page__grid {
+    width: calc(100% - 32px);
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    gap: 24px;
+
+    flex: none;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  /* SECTION: Mobile Project Card */
+
+  .projects-page__card {
+    scroll-margin-top: 20px;
+  }
+
+  .projects-page__image {
+    height: 220px;
+  }
+
+  .projects-page__card-body {
+    padding: 20px;
+  }
+
+  .projects-page__card-title {
+    font-size: 22px;
+  }
+
+  .projects-page__card-description {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* SECTION: Mobile Project Gallery */
+
+  .projects-page__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+
+    padding: 0 20px 20px;
+  }
+
+  .projects-page__gallery-image {
+    height: 110px;
+  }
+}

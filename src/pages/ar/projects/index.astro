@@ -1,0 +1,27 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import ProjectsPage from "../../../components/ProjectsPage.astro";
+
+// ==================================================
+// SECTION: Page Properties
+// ==================================================
+
+const lang = "ar";
+---
+
+<!-- ==================================================
+     SECTION: Arabic Projects Page
+     ================================================== -->
+
+<BaseLayout
+  lang={lang}
+  title="مشاريعنا | الشعار للمساحة والمقاولات"
+>
+  <Navbar lang={lang} />
+  <ProjectsPage lang={lang} />
+</BaseLayout>

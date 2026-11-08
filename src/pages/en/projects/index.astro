@@ -1,0 +1,27 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import ProjectsPage from "../../../components/ProjectsPage.astro";
+
+// ==================================================
+// SECTION: Page Properties
+// ==================================================
+
+const lang = "en";
+---
+
+<!-- ==================================================
+     SECTION: English Projects Page
+     ================================================== -->
+
+<BaseLayout
+  lang={lang}
+  title="Our Projects | AL SHAAR"
+>
+  <Navbar lang={lang} />
+  <ProjectsPage lang={lang} />
+</BaseLayout>

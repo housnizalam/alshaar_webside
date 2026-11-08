@@ -1,0 +1,136 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./ProjectsPage.css";
+import { projects } from "../data/projects.js";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+const locale = lang === "en" ? "en" : "ar";
+
+// ==================================================
+// SECTION: Page Translations
+// ==================================================
+
+const translations = {
+  ar: {
+    title: "مشاريعنا",
+    description:
+      "نستعرض مجموعة من مشاريعنا في أعمال المساحة والهندسة والمقاولات، التي تعكس خبرتنا واهتمامنا بالدقة والجودة.",
+  },
+
+  en: {
+    title: "Our Projects",
+    description:
+      "Explore a selection of our surveying, engineering, and construction projects, reflecting our experience and commitment to accuracy and quality.",
+  },
+};
+
+const t = translations[locale];
+
+// ==================================================
+// SECTION: Project Data Types
+// ==================================================
+
+type Project = (typeof projects)[number] & {
+  details?: {
+    ar: string;
+    en: string;
+  };
+  images?: string[];
+};
+
+const displayProjects: Project[] = projects;
+---
+
+<!-- ==================================================
+     SECTION: Projects Page
+     ================================================== -->
+
+<main class="projects-page">
+
+  <!-- ==================================================
+       SECTION: Projects Introduction
+       ================================================== -->
+
+  <header class="projects-page__intro">
+
+    <h1 class="projects-page__title">
+      {t.title}
+    </h1>
+
+    <div class="projects-page__divider"></div>
+
+    <p class="projects-page__description">
+      {t.description}
+    </p>
+
+  </header>
+
+  <!-- ==================================================
+       SECTION: Projects List
+       ================================================== -->
+
+  <section
+    class="projects-page__grid"
+    aria-label={t.title}
+  >
+
+    {
+      displayProjects.map((project) => (
+        <article
+          id={project.id}
+          class="projects-page__card"
+        >
+
+          <img
+            src={project.image}
+            alt={project.title[locale]}
+            class="projects-page__image"
+            loading="lazy"
+          />
+
+          <div class="projects-page__card-body">
+
+            <h2 class="projects-page__card-title">
+              {project.title[locale]}
+            </h2>
+
+            <div class="projects-page__card-divider"></div>
+
+            <p class="projects-page__card-description">
+              {project.details?.[locale] ??
+                project.description[locale]}
+            </p>
+
+          </div>
+
+          {
+            project.images && project.images.length > 0 && (
+              <div class="projects-page__gallery">
+
+                {project.images.map((image, index) => (
+                  <img
+                    src={image}
+                    alt={`${project.title[locale]} - ${index + 1}`}
+                    class="projects-page__gallery-image"
+                    loading="lazy"
+                  />
+                ))}
+
+              </div>
+            )
+          }
+
+        </article>
+      ))
+    }
+
+  </section>
+
+</main>

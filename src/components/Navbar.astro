@@ -36,6 +36,10 @@ const isHome = currentPath === "/ar/" || currentPath === "/en/";
 const isServices = currentPath.startsWith("/ar/services/")
   || currentPath.startsWith("/en/services/");
 
+  const isProjects =
+  currentPath.startsWith("/ar/projects/") ||
+  currentPath.startsWith("/en/projects/");
+
 ---
 
 <!-- ==================================================
@@ -163,13 +167,21 @@ const isServices = currentPath.startsWith("/ar/services/")
   </svg>
 </a>
 
-  <!-- Projects -->
-  <span class="navbar__link">
-    {t.nav.projects}
-    <svg class="navbar__icon" aria-hidden="true">
-      <use href="#icon-projects" />
-    </svg>
-  </span>
+<!-- Projects -->
+<a
+  href={`/${lang}/projects/`}
+  class:list={[
+    "navbar__link",
+    { "navbar__link--active": isProjects }
+  ]}
+  aria-current={isProjects ? "page" : undefined}
+>
+  {t.nav.projects}
+
+  <svg class="navbar__icon" aria-hidden="true">
+    <use href="#icon-projects" />
+  </svg>
+</a>
 
   <!-- Home -->
   <a
@@ -207,7 +219,13 @@ const isServices = currentPath.startsWith("/ar/services/")
           {t.nav.home}
         </a>
 
-        <span class="mobile-menu__link">{t.nav.projects}</span>
+        <a
+  href={`/${lang}/projects/`}
+  class="mobile-menu__link"
+  aria-current={isProjects ? "page" : undefined}
+>
+  {t.nav.projects}
+</a>
         <a
   href={`/${lang}/services/`}
   class="mobile-menu__link"
