@@ -1,0 +1,96 @@
+/* ==================================================
+   SECTION: About Page
+   ================================================== */
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100svh;
+
+  padding: 145px 2% 80px;
+
+  background-image: url("/images/hero-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* ==================================================
+   SECTION: About Page Content
+   ================================================== */
+
+.about-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+
+  width: 72%;
+  max-width: 1200px;
+
+  margin: 0 0 0 auto;
+}
+
+/* ==================================================
+   SECTION: About Responsive - Tablet
+   ================================================== */
+
+@media (max-width: 1200px) {
+  .about-page__content {
+    width: 76%;
+  }
+}
+
+/* ==================================================
+   SECTION: About Responsive - Mobile
+   ================================================== */
+
+@media (max-width: 900px) {
+
+  /* SECTION: Mobile Page Layout */
+
+  .about-page {
+    padding: 0 0 50px;
+
+    background-image: none;
+    background-color: var(--color-background);
+  }
+
+  /* ==================================================
+     SECTION: Mobile Hero Image
+     ================================================== */
+
+  .about-page::before {
+    content: "";
+
+    display: block;
+    flex-shrink: 0;
+
+    width: calc(100% - 32px);
+    aspect-ratio: 16 / 9;
+
+    margin: 0 auto;
+
+    background-image: url("/images/hero-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 16px;
+  }
+
+  /* ==================================================
+     SECTION: Mobile Content
+     ================================================== */
+
+  .about-page__content {
+    width: calc(100% - 32px);
+    max-width: 100%;
+
+    margin: 35px auto 0;
+
+    gap: 60px;
+  }
+}

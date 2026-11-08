@@ -40,6 +40,10 @@ const isServices = currentPath.startsWith("/ar/services/")
   currentPath.startsWith("/ar/projects/") ||
   currentPath.startsWith("/en/projects/");
 
+ const isAbout =
+  currentPath.startsWith("/ar/about/") ||
+  currentPath.startsWith("/en/about/");
+
 ---
 
 <!-- ==================================================
@@ -127,29 +131,44 @@ const isServices = currentPath.startsWith("/ar/services/")
     </defs>
   </svg>
 
-  <!-- Contact -->
-  <span class="navbar__link">
-    {t.nav.contact}
-    <svg class="navbar__icon" aria-hidden="true">
-      <use href="#icon-contact" />
-    </svg>
-  </span>
+<!-- Contact -->
+<a
+  href={`/${lang}/about/#contact`}
+  class="navbar__link"
+  data-about-section="contact"
+>
+  {t.nav.contact}
 
-  <!-- Certificates -->
-  <span class="navbar__link">
-    {t.nav.certificates}
-    <svg class="navbar__icon" aria-hidden="true">
-      <use href="#icon-certificates" />
-    </svg>
-  </span>
+  <svg class="navbar__icon" aria-hidden="true">
+    <use href="#icon-contact" />
+  </svg>
+</a>
+
+<!-- Certificates -->
+<a
+  href={`/${lang}/about/#certificates`}
+  class="navbar__link"
+  data-about-section="certificates"
+>
+  {t.nav.certificates}
+
+  <svg class="navbar__icon" aria-hidden="true">
+    <use href="#icon-certificates" />
+  </svg>
+</a>
 
   <!-- About -->
-  <span class="navbar__link">
-    {t.nav.about}
-    <svg class="navbar__icon" aria-hidden="true">
-      <use href="#icon-about" />
-    </svg>
-  </span>
+<a
+  href={`/${lang}/about/#about`}
+  class="navbar__link"
+  data-about-section="about"
+>
+  {t.nav.about}
+
+  <svg class="navbar__icon" aria-hidden="true">
+    <use href="#icon-about" />
+  </svg>
+</a>
 
   <!-- Services -->
 <a
@@ -233,9 +252,26 @@ const isServices = currentPath.startsWith("/ar/services/")
 >
   {t.nav.services}
 </a>
-        <span class="mobile-menu__link">{t.nav.about}</span>
-        <span class="mobile-menu__link">{t.nav.certificates}</span>
-        <span class="mobile-menu__link">{t.nav.contact}</span>
+     <a
+  href={`/${lang}/about/#about`}
+  class="mobile-menu__link"
+>
+  {t.nav.about}
+</a>
+
+<a
+  href={`/${lang}/about/#certificates`}
+  class="mobile-menu__link"
+>
+  {t.nav.certificates}
+</a>
+
+<a
+  href={`/${lang}/about/#contact`}
+  class="mobile-menu__link"
+>
+  {t.nav.contact}
+</a>
         <!-- ==================================================
      SECTION: Mobile Language Selection
      ================================================== -->
@@ -305,4 +341,60 @@ const isServices = currentPath.startsWith("/ar/services/")
 </header>
 
 
+
+<!-- ==================================================
+     SECTION: Close Mobile Menu On Outside Click
+     ================================================== -->
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>(".mobile-menu");
+
+  if (mobileMenu) {
+    document.addEventListener("pointerdown", (event) => {
+      const target = event.target;
+
+      if (target instanceof Node && !mobileMenu.contains(target)) {
+        mobileMenu.open = false;
+      }
+    });
+  }
+
+  // ==================================================
+// SECTION: Active About Navigation
+// ==================================================
+
+const aboutNavLinks =
+  document.querySelectorAll<HTMLAnchorElement>(
+    ".navbar__link[data-about-section]"
+  );
+
+function updateAboutNavigation() {
+  const isAboutPage = /^\/(ar|en)\/about\/?$/.test(
+    window.location.pathname
+  );
+
+  const activeSection = isAboutPage
+    ? window.location.hash.replace("#", "") || "about"
+    : null;
+
+  aboutNavLinks.forEach((link) => {
+    const isActive =
+      link.dataset.aboutSection === activeSection;
+
+    link.classList.toggle("navbar__link--active", isActive);
+
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+// Initialize the active navigation item
+updateAboutNavigation();
+
+// Update when navigating between sections
+window.addEventListener("hashchange", updateAboutNavigation);
+</script>
 

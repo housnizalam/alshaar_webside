@@ -1,0 +1,129 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./AboutOffice.css";
+
+import { aboutOffice } from "../data/about.js";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+const locale = lang === "en" ? "en" : "ar";
+
+// ==================================================
+// SECTION: Translations
+// ==================================================
+
+const translations = {
+  ar: {
+    title: "من نحن",
+    subtitle: "خبرة تمتد لسنوات، ورؤية لبناء المستقبل",
+
+    graduation: "عامًا منذ التخرج",
+    saudiExperience: "عامًا من الخبرة في السعودية",
+    approximately: "نحو",
+  },
+
+  en: {
+    title: "About Us",
+    subtitle: "Years of experience and a vision for the future",
+
+    graduation: "Years Since Graduation",
+    saudiExperience: "Years of Experience in Saudi Arabia",
+    approximately: "Approx.",
+  },
+};
+
+const t = translations[locale];
+---
+
+<!-- ==================================================
+     SECTION: About Office
+     ================================================== -->
+
+<section
+  id="about"
+  class="about-office"
+  aria-labelledby="about-office-title"
+>
+
+  <!-- ==================================================
+       SECTION: About Header
+       ================================================== -->
+
+  <header class="about-office__header">
+
+    <h1
+      id="about-office-title"
+      class="about-office__title"
+    >
+      {t.title}
+    </h1>
+
+    <div class="about-office__divider"></div>
+
+    <p class="about-office__subtitle">
+      {t.subtitle}
+    </p>
+
+  </header>
+
+  <!-- ==================================================
+       SECTION: About Glass Card
+       ================================================== -->
+
+  <div class="about-office__card">
+
+    <h2 class="about-office__owner">
+      {aboutOffice.owner[locale]}
+    </h2>
+
+    <div class="about-office__biography">
+
+      {aboutOffice.biography[locale].map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+
+    </div>
+
+  </div>
+
+  <!-- ==================================================
+       SECTION: Experience Highlights
+       ================================================== -->
+
+  <div class="about-office__stats">
+
+    <!-- SECTION: Graduation Experience -->
+    <div class="about-office__stat">
+
+      <span class="about-office__stat-number">
+        {aboutOffice.experience.yearsSinceGraduation}+
+      </span>
+
+      <span class="about-office__stat-label">
+        {t.graduation}
+      </span>
+
+    </div>
+
+    <!-- SECTION: Saudi Arabia Experience -->
+    <div class="about-office__stat">
+
+      <span class="about-office__stat-number">
+        {aboutOffice.experience.yearsInSaudiArabia}+
+      </span>
+
+      <span class="about-office__stat-label">
+        {t.saudiExperience}
+      </span>
+
+    </div>
+
+  </div>
+
+</section>v

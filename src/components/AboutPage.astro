@@ -1,0 +1,42 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./AboutPage.css";
+
+import AboutOffice from "./AboutOffice.astro";
+import CertificatesSection from "./CertificatesSection.astro";
+import ContactSection from "./ContactSection.astro";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+---
+
+<!-- ==================================================
+     SECTION: About Page
+     ================================================== -->
+
+<main class="about-page">
+
+  <!-- ==================================================
+       SECTION: Page Content
+       ================================================== -->
+
+  <div class="about-page__content">
+
+    <!-- SECTION: About Office -->
+    <AboutOffice lang={lang} />
+
+    <!-- SECTION: Certificates -->
+    <CertificatesSection lang={lang} />
+
+    <!-- SECTION: Contact -->
+    <ContactSection lang={lang} />
+
+  </div>
+
+</main>

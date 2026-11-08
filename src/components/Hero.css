@@ -315,7 +315,7 @@ html[lang="en"] .hero__content {
   direction: ltr;
 
   min-height: max(850px, calc(100svh - 110px));
-  padding: 145px 32px 24px;
+  padding: 115px 32px 24px;
 
   overflow: hidden;
 }

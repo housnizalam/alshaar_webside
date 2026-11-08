@@ -1,0 +1,201 @@
+/* ==================================================
+   SECTION: About Office
+   ================================================== */
+
+.about-office {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+
+  width: 100%;
+  scroll-margin-top: 130px;
+}
+
+/* ==================================================
+   SECTION: About Header
+   ================================================== */
+
+.about-office__header {
+  direction: rtl;
+  text-align: right;
+}
+
+.about-office__title {
+  margin: 0;
+
+  color: var(--color-primary);
+  font-size: clamp(32px, 3.4vw, 52px);
+  font-weight: 700;
+}
+
+.about-office__divider {
+  width: 70px;
+  height: 4px;
+
+  margin: 12px 0 18px auto;
+
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+.about-office__subtitle {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 19px;
+}
+
+/* ==================================================
+   SECTION: About Glass Card
+   ================================================== */
+
+.about-office__card {
+  padding: 32px;
+
+  background: rgb(241 243 246 / 50%);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 24px;
+
+  box-shadow: var(--shadow-card);
+
+  direction: rtl;
+  text-align: right;
+}
+
+.about-office__owner {
+  margin: 0 0 22px;
+
+  color: var(--color-primary);
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.about-office__biography {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-office__biography p {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 17px;
+  line-height: 1.95;
+}
+
+/* ==================================================
+   SECTION: Experience Highlights
+   ================================================== */
+
+.about-office__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.about-office__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 145px;
+  padding: 20px;
+
+  background: rgb(241 243 246 / 55%);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-card);
+
+  text-align: center;
+}
+
+.about-office__stat-number {
+  color: var(--color-primary);
+
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about-office__stat-label {
+  color: var(--color-text);
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ==================================================
+   SECTION: About English Direction
+   ================================================== */
+
+html[lang="en"] .about-office__header,
+html[lang="en"] .about-office__card {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .about-office__divider {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ==================================================
+   SECTION: About Responsive
+   ================================================== */
+
+@media (max-width: 600px) {
+
+  .about-office {
+    gap: 20px;
+    scroll-margin-top: 20px;
+  }
+
+  .about-office__title {
+    font-size: 32px;
+  }
+
+  .about-office__subtitle {
+    font-size: 15px;
+  }
+
+  .about-office__card {
+    padding: 22px;
+  }
+
+  .about-office__owner {
+    font-size: 22px;
+  }
+
+  .about-office__biography p {
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .about-office__stats {
+    gap: 12px;
+  }
+
+  .about-office__stat {
+    min-height: 115px;
+    padding: 12px;
+  }
+
+  .about-office__stat-number {
+    font-size: 30px;
+  }
+
+  .about-office__stat-label {
+    font-size: 12px;
+  }
+}

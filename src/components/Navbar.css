@@ -371,6 +371,13 @@
     padding: 12px;
 
     direction: ltr;
+
+    pointer-events: none;
+  }
+
+  .mobile-menu,
+  .navbar__brand {
+    pointer-events: auto;
   }
 
   .navbar {
@@ -436,21 +443,29 @@
    ================================================== */
 
 @media (max-width: 900px) {
-  .mobile-menu {
-    position: absolute;
+  /* ==================================================
+   SECTION: Mobile Navigation Position
+   ================================================== */
 
-    top: 16px;
-    left: 12px;
-    right: auto;
-  }
+  @media (max-width: 900px) {
+    .mobile-menu {
+      position: fixed;
 
-  .mobile-menu__panel {
-    left: 0;
-    right: auto;
-    inset-inline-end: auto;
+      top: 20px;
+      left: 24px;
+      right: auto;
 
-    direction: rtl;
-    text-align: right;
+      z-index: 2000;
+    }
+
+    .mobile-menu__panel {
+      left: 0;
+      right: auto;
+      inset-inline-end: auto;
+
+      direction: rtl;
+      text-align: right;
+    }
   }
 }
 

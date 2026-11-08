@@ -1,0 +1,165 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./ContactSection.css";
+
+import { contactInfo, socialLinks } from "../data/contact.js";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+const locale = lang === "en" ? "en" : "ar";
+
+// ==================================================
+// SECTION: Translations
+// ==================================================
+
+const translations = {
+  ar: {
+    title: "تواصل معنا",
+    description:
+      "يسعدنا استقبال استفساراتكم وطلباتكم، ونتطلع إلى التعاون معكم في مشاريعكم القادمة.",
+    phone: "الهاتف",
+    email: "البريد الإلكتروني",
+    address: "العنوان",
+    comingSoon: "سيتم تفعيل الرابط قريبًا",
+  },
+
+  en: {
+    title: "Contact Us",
+    description:
+      "We welcome your inquiries and look forward to collaborating with you on your upcoming projects.",
+    phone: "Phone",
+    email: "Email",
+    address: "Address",
+    comingSoon: "Link coming soon",
+  },
+};
+
+const t = translations[locale];
+---
+
+<!-- ==================================================
+     SECTION: Contact
+     ================================================== -->
+
+<section
+  id="contact"
+  class="contact-section"
+  aria-labelledby="contact-title"
+>
+
+  <!-- ==================================================
+       SECTION: Contact Header
+       ================================================== -->
+
+  <header class="contact-section__header">
+
+    <h2 id="contact-title" class="contact-section__title">
+      {t.title}
+    </h2>
+
+    <div class="contact-section__divider"></div>
+
+    <p class="contact-section__description">
+      {t.description}
+    </p>
+
+  </header>
+
+  <!-- ==================================================
+       SECTION: Social Links
+       ================================================== -->
+
+  <div class="contact-section__social-grid">
+
+    {socialLinks.map((social) => (
+
+      <div class="contact-section__social-card">
+
+        <span
+          class:list={[
+            "contact-section__social-icon",
+            `contact-section__social-icon--${social.id}`
+          ]}
+          aria-hidden="true"
+        >
+          {
+            social.id === "whatsapp" ? "☎" :
+            social.id === "facebook" ? "f" :
+            social.id === "instagram" ? "◎" :
+            social.id === "linkedin" ? "in" : "•"
+          }
+        </span>
+
+        <span class="contact-section__social-label">
+          {social.label[locale]}
+        </span>
+
+        {social.url ? (
+          <a
+            href={social.url}
+            class="contact-section__social-action"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <button
+            type="button"
+            class="contact-section__social-action contact-section__social-action--disabled"
+            disabled
+            aria-label={t.comingSoon}
+          >
+            <span aria-hidden="true">↗</span>
+          </button>
+        )}
+
+      </div>
+
+    ))}
+
+  </div>
+
+  <!-- ==================================================
+       SECTION: Office Contact Information
+       ================================================== -->
+
+  {
+    (contactInfo.phone ||
+      contactInfo.email ||
+      contactInfo.address[locale]) && (
+
+      <div class="contact-section__info">
+
+        {contactInfo.phone && (
+          <p>
+            <strong>{t.phone}:</strong>
+            <span>{contactInfo.phone}</span>
+          </p>
+        )}
+
+        {contactInfo.email && (
+          <p>
+            <strong>{t.email}:</strong>
+            <span>{contactInfo.email}</span>
+          </p>
+        )}
+
+        {contactInfo.address[locale] && (
+          <p>
+            <strong>{t.address}:</strong>
+            <span>{contactInfo.address[locale]}</span>
+          </p>
+        )}
+
+      </div>
+    )
+  }
+
+</section>

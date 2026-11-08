@@ -1,0 +1,116 @@
+---
+// ==================================================
+// SECTION: Imports
+// ==================================================
+
+import "./CertificatesSection.css";
+
+import { certificates } from "../data/certificates.js";
+
+// ==================================================
+// SECTION: Component Properties
+// ==================================================
+
+const { lang = "ar" } = Astro.props;
+const locale = lang === "en" ? "en" : "ar";
+
+// ==================================================
+// SECTION: Translations
+// ==================================================
+
+const translations = {
+  ar: {
+    title: "الشهادات والخبرات",
+    description:
+      "نستعرض هنا الشهادات والمؤهلات المهنية والوثائق المرتبطة بالخبرة العملية.",
+    viewCertificate: "عرض الشهادة",
+  },
+
+  en: {
+    title: "Certificates & Qualifications",
+    description:
+      "Explore our professional certificates, qualifications, and experience-related documents.",
+    viewCertificate: "View Certificate",
+  },
+};
+
+const t = translations[locale];
+---
+
+<!-- ==================================================
+     SECTION: Certificates
+     ================================================== -->
+
+<section
+  id="certificates"
+  class="certificates-section"
+  aria-labelledby="certificates-title"
+>
+
+  <!-- ==================================================
+       SECTION: Certificates Header
+       ================================================== -->
+
+  <header class="certificates-section__header">
+
+    <h2
+      id="certificates-title"
+      class="certificates-section__title"
+    >
+      {t.title}
+    </h2>
+
+    <div class="certificates-section__divider"></div>
+
+    <p class="certificates-section__description">
+      {t.description}
+    </p>
+
+  </header>
+
+  <!-- ==================================================
+       SECTION: Certificates Grid
+       ================================================== -->
+
+  <div class="certificates-section__grid">
+
+    {certificates.map((certificate) => (
+
+      <article class="certificates-section__card">
+
+        <!-- Certificate Image -->
+        <a
+          href={certificate.image}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="certificates-section__image-link"
+          aria-label={`${t.viewCertificate}: ${certificate.title[locale]}`}
+        >
+          <img
+            src={certificate.image}
+            alt={certificate.title[locale]}
+            class="certificates-section__image"
+            loading="lazy"
+          />
+        </a>
+
+        <!-- Certificate Information -->
+        <div class="certificates-section__content">
+
+          <h3 class="certificates-section__card-title">
+            {certificate.title[locale]}
+          </h3>
+
+          <p class="certificates-section__card-description">
+            {certificate.description[locale]}
+          </p>
+
+        </div>
+
+      </article>
+
+    ))}
+
+  </div>
+
+</section>

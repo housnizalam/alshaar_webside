@@ -1,0 +1,249 @@
+/* ==================================================
+   SECTION: Contact Section
+   ================================================== */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  width: 100%;
+
+  scroll-margin-top: 130px;
+}
+
+/* ==================================================
+   SECTION: Contact Header
+   ================================================== */
+
+.contact-section__header {
+  direction: rtl;
+  text-align: right;
+}
+
+.contact-section__title {
+  margin: 0;
+
+  color: var(--color-primary);
+
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 700;
+}
+
+.contact-section__divider {
+  width: 70px;
+  height: 4px;
+
+  margin: 12px 0 18px auto;
+
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
+.contact-section__description {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* ==================================================
+   SECTION: Social Links Grid
+   ================================================== */
+
+.contact-section__social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* ==================================================
+   SECTION: Social Card
+   ================================================== */
+
+.contact-section__social-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  min-height: 100px;
+  padding: 20px;
+
+  background: rgb(241 243 246 / 50%);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-card);
+
+  direction: rtl;
+}
+
+/* ==================================================
+   SECTION: Social Icons
+   ================================================== */
+
+.contact-section__social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.contact-section__social-icon--whatsapp {
+  background: #25d366;
+}
+
+.contact-section__social-icon--facebook {
+  background: #1877f2;
+}
+
+.contact-section__social-icon--instagram {
+  background: #c13584;
+}
+
+.contact-section__social-icon--linkedin {
+  background: #0a66c2;
+  font-size: 21px;
+}
+
+/* ==================================================
+   SECTION: Social Content
+   ================================================== */
+
+.contact-section__social-label {
+  flex: 1;
+
+  color: var(--color-primary);
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ==================================================
+   SECTION: Social Action
+   ================================================== */
+
+.contact-section__social-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  background: var(--color-primary);
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.contact-section__social-action--disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ==================================================
+   SECTION: Contact Information
+   ================================================== */
+
+.contact-section__info {
+  padding: 25px;
+
+  background: rgb(241 243 246 / 50%);
+
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-card);
+}
+
+.contact-section__info p {
+  display: flex;
+  gap: 12px;
+
+  margin: 0 0 12px;
+
+  color: var(--color-text);
+
+  font-size: 16px;
+}
+
+.contact-section__info p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================================================
+   SECTION: Contact English Direction
+   ================================================== */
+
+html[lang="en"] .contact-section__header,
+html[lang="en"] .contact-section__social-card,
+html[lang="en"] .contact-section__info {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="en"] .contact-section__divider {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ==================================================
+   SECTION: Contact Responsive
+   ================================================== */
+
+@media (max-width: 600px) {
+
+  .contact-section {
+    gap: 20px;
+    scroll-margin-top: 20px;
+  }
+
+  .contact-section__title {
+    font-size: 30px;
+  }
+
+  .contact-section__description {
+    font-size: 15px;
+  }
+
+  .contact-section__social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-section__social-card {
+    min-height: 85px;
+    padding: 15px;
+  }
+
+  .contact-section__social-icon {
+    width: 44px;
+    height: 44px;
+
+    font-size: 23px;
+  }
+
+  .contact-section__social-label {
+    font-size: 15px;
+  }
+}
